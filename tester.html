@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Awal</title>
+    <link rel="icon" href="https://your-icon-url.ico" type="image/x-icon"> <!-- Ganti URL ikon dengan URL gambar ikon Anda -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(45deg, #3498db, #e74c3c, #2ecc71, #f39c12, #8e44ad);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            transition: background 1s ease; /* Efek transisi saat background berganti */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            margin-top: 70px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        #running-text-container {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        #running-text {
+            display: inline-block;
+            animation: marquee 8s linear infinite;
+        }
+
+        #logo {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        form {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        input[type="submit"] {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        audio {
+            display: none;
+        }
+
+        #play-music, #pause-music {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        #pause-music {
+            background-color: #27ae60;
+        }
+
+        #device-info {
+            font-size: 0.8em;
+            margin-top: 20px;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Selamat datang di Halaman Awal</h1>
+        
+        <div id="running-text-container">
+            <div id="running-text">Ini adalah contoh running text yang keren! </div>
+        </div>
+
+        <img src="https://placekitten.com/150/150" alt="Logo" id="logo">
+
+        <form action="halaman-utama.html">
+            <input type="submit" value="Go">
+        </form>
+
+        <audio controls autoplay loop id="background-music">
+            <source src="https://your-audio-file-url.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <button id="play-music" onclick="playMusic()">Play</button>
+        <button id="pause-music" onclick="pauseMusic()">Pause</button>
+
+        <div id="device-info">
+            Device: <strong><?php echo $_SERVER['HTTP_USER_AGENT']; ?></strong> <br>
+            Browser: <strong><?php echo $_SERVER['HTTP_USER_AGENT']; ?></strong>
+        </div>
+    </div>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById('background-music');
+            audio.play();
+        }
+
+        function pauseMusic() {
+            var audio = document.getElementById('background-music');
+            audio.pause();
+        }
+    </script>
+</body>
+</html>
